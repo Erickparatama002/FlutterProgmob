@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+import 'main.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,21 +18,21 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const Pertemuan9(title: 'Flutter Demo Home Page Pertemuan 9'),
+      home: const Pertemuan_9(title: 'Flutter Demo Home Page Pertemuan 9'),
     );
   }
 }
 
-class Pertemuan9 extends StatefulWidget {
-  const Pertemuan9({super.key, required this.title});
+class Pertemuan_9 extends StatefulWidget {
+  const Pertemuan_9({super.key, required this.title});
 
   final String title;
 
   @override
-  State<Pertemuan9> createState() => _Pertemuan9State();
+  State<Pertemuan_9> createState() => _Pertemuan_9State();
 }
 
-class _Pertemuan9State extends State<Pertemuan9> {
+class _Pertemuan_9State extends State<Pertemuan_9> {
   int _counter = 2;
 
   void _incrementCounter() {
@@ -79,7 +82,23 @@ class _Pertemuan9State extends State<Pertemuan9> {
               style: TextStyle(
                   color: Colors.white
               ),
-            ))
+            )),
+
+            ElevatedButton(
+                child: Text(
+                    'Logout'
+                ),
+                // Within the `FirstRoute` widget
+                onPressed: ()  async {
+                  SharedPreferences pref = await SharedPreferences.getInstance();
+                  await pref.setInt("is_login", 0);
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => const Myhome(title:'Home')),
+                  );
+                }
+            )
+
           ],
         ),
       ),
