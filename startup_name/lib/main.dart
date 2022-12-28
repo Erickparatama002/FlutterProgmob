@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:splashscreen/splashscreen.dart';
+import 'package:startup_name/mahasiswa/mahasiswa_get.dart';
+import 'package:startup_name/splashscreen.dart';
 import 'package:startup_name/Home.dart';
-
 import 'Pertemuan_9.dart';
 
 void main() {
   runApp(new MaterialApp(
-    home: Home(),
+    home: Splashscreen(title: "",),
   ));
 }
 
